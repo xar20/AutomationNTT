@@ -8,9 +8,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.*;
 
 import java.io.File;
 
@@ -29,6 +27,7 @@ public class BaseTest {
 
     @AfterClass
     public void tearDown(){
+        ReportManager.getInstance().flush(); //added by Calpagiu Raul
         if (driver != null)
         {
             driver.quit();
@@ -47,12 +46,11 @@ public class BaseTest {
         if (result.getStatus() == ITestResult.FAILURE){
             extentTest.log(Status.FAIL, MarkupHelper.createLabel("Test case Failed: " + result.getName(), ExtentColor.RED));
         } else if (result.getStatus() == ITestResult.SUCCESS) {
-            extentTest.log(Status.FAIL, MarkupHelper.createLabel("Test case Passed: " + result.getName(), ExtentColor.GREEN));
+            extentTest.log(Status.PASS, MarkupHelper.createLabel("Test case Passed: " + result.getName(), ExtentColor.GREEN));
         } else {
             extentTest.log(Status.SKIP, MarkupHelper.createLabel("Test case Skipped: " + result.getName(), ExtentColor.YELLOW));
         }
     }
-
 
     public void initTest(String testName){
         extentTest = ReportManager.createTest(testName);
@@ -68,5 +66,7 @@ public class BaseTest {
         // capture and save screenshot
         screenshotUtils.captureAndSaveScreenshots(testName);
     }
+
+
 
 }

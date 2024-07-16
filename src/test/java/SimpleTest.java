@@ -4,6 +4,7 @@ import org.testng.annotations.Test;
 import utile.BaseTest;
 
 public class SimpleTest extends BaseTest {
+
     @Test
     public void  firstTest(){
 
@@ -14,7 +15,12 @@ public class SimpleTest extends BaseTest {
         SimpleActions simpleActions = new SimpleActions(driver);
         String loginText = simpleActions.getLoginText();
 
-        Assert.assertEquals(loginText, expectedText);
-
+        Assert.assertEquals(loginText, expectedText.toLowerCase());
     }
+
+//    @Test
+//    public void testSkipped() {
+//        initTest("Skipped test");
+//        throw new SkipException("The test has been skipped");
+//    }
 }
