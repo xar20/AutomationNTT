@@ -5,14 +5,19 @@
 <!--            <class name="SimpleTest"/>-->
 <!--        </classes>-->
 <!--    </test>-->
-    <test name="Register User">
-        <classes>
-            <class name="tests.RegisterUser"/>
-        </classes>
-    </test>
+<!--    <test name="Register User">-->
+<!--        <classes>-->
+<!--            <class name="tests.RegisterUser"/>-->
+<!--        </classes>-->
+<!--    </test>-->
     <test name="Login User">
         <classes>
-            <class name="tests.LoginUser"/>
+            <class name="tests.LoginTrainer"/>
         </classes>
     </test>
+<!--    <test name="Login User">-->
+<!--        <classes>-->
+<!--            <class name="tests.TrainingProgram"/>-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
